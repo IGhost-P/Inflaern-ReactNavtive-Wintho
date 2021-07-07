@@ -1,4 +1,5 @@
-platform :ios, '9.0'
+platform :ios, '10.0'
+require_relative '../node_modules/react-native/scripts/autolink-ios'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 target 'my_first_app' do
@@ -26,20 +27,29 @@ target 'my_first_app' do
   pod 'React-jsi', :path => '../node_modules/react-native/ReactCommon/jsi'
   pod 'React-jsiexecutor', :path => '../node_modules/react-native/ReactCommon/jsiexecutor'
   pod 'React-jsinspector', :path => '../node_modules/react-native/ReactCommon/jsinspector'
-  pod 'ReactCommon/jscallinvoker', :path => "../node_modules/react-native/ReactCommon"
+  pod 'ReactCommon/callinvoker', :path => "../node_modules/react-native/ReactCommon"
   pod 'ReactCommon/turbomodule/core', :path => "../node_modules/react-native/ReactCommon"
-  pod 'Yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
+  pod 'Yoga', :path => '../node_modules/react-native/ReactCommon/yoga', :modular_headers => true
 
   pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
   target 'my_first_appTests' do
-    inherit! :search_paths
+    inherit! :complete
     # Pods for testing
   end
 
   use_native_modules!
+
+  # Enables Flipper.
+  #
+  # Note that if you have use_frameworks! enabled, Flipper will not work and
+  # you should disable these next few lines.
+  add_flipper_pods!
+  post_install do |installer|
+    flipper_post_install(installer)
+  end
 end
 
 target 'my_first_app-tvOS' do
@@ -49,5 +59,4 @@ target 'my_first_app-tvOS' do
     inherit! :search_paths
     # Pods for testing
   end
-
 end
