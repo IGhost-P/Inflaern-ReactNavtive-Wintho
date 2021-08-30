@@ -10,6 +10,7 @@ import React, { useState, useCallBack } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import Generator from './src/generator';
 import Header from './src/header';
+import Input from './src/inPut';
 import NumList from './src/numList';
 
 const styles = StyleSheet.create({
@@ -52,7 +53,7 @@ const App = function () {
 
   return (
     <View style={mainView}>
-      <Header name={appName} />
+      {/* <Header name={appName} />
       <View>
         <Text
         style={mainText}
@@ -67,8 +68,10 @@ const App = function () {
         <NumList num={random}
                 deleteNum={onNumDelete}
                   />
-      </ScrollView> 
+      </ScrollView>  */}
       
+      <Input/>
+
     </View>
   );
 };
