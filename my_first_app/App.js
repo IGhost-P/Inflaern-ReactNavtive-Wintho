@@ -7,7 +7,7 @@
  */
 
 import React, { useState, useCallBack } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import Generator from './src/generator';
 import Header from './src/header';
 import NumList from './src/numList';
@@ -58,10 +58,17 @@ const App = function () {
         style={mainText}
         onPress ={()=> alert("text touch event")}>Hello Wolrd</Text>
       </View>
-      <NumList num={random}
-               deleteNum={onNumDelete}
-                />
+
       <Generator add = {onAddRandomNum}/>
+
+      <ScrollView 
+        style ={{width : '100%'}}
+        >
+        <NumList num={random}
+                deleteNum={onNumDelete}
+                  />
+      </ScrollView> 
+      
     </View>
   );
 };
