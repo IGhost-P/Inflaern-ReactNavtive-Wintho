@@ -8,6 +8,7 @@
 
 import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import Generator from './src/generator';
 import Header from './src/header';
 
 const styles = StyleSheet.create({
@@ -18,20 +19,35 @@ const styles = StyleSheet.create({
     alignItems: 'center', // 수평 정령
     justifyContent: 'center',
   },
+  mainText: {
+    fontSize: 20,
+  },
 });
 
-const { mainView } = styles;
+const { mainView , mainText } = styles;
 
 const App = function () {
   const [state, setState] = useState({
     appName: 'My First App',
+    random: [36,999]
   });
+  
+  onAddRandomNum= () =>{
+    alert("add random number!")
+  }
 
-  const { appName } = state;
+  const { appName, random } = state;
 
   return (
     <View style={mainView}>
       <Header name={appName} />
+      <View>
+        <Text
+        style={mainText}
+        onPress ={()=> alert("text touch event")}>Hello Wolrd</Text>
+      </View>
+
+      <Generator add = {onAddRandomNum}/>
     </View>
   );
 };
