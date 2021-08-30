@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React, { useState } from 'react';
+import React, { useState, useCallBack } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Generator from './src/generator';
 import Header from './src/header';
@@ -32,12 +32,23 @@ const App = function () {
     appName: 'My First App',
     random: [36,999]
   });
-  
-  onAddRandomNum= () =>{
-    alert("add random number!")
-  }
 
   const { appName, random } = state;
+
+  const onAddRandomNum = () => {
+    randomNum = Math.floor(Math.random()*100)+1;
+    setState(state => {
+      return {
+        random : [...random, randomNum]
+      }
+    })
+  }
+
+  const onNumDelete = (position) => {
+    setState({random : random.filter((num,index)=> {return position !== index})}) // {random} = state이고 setState({state})임
+  }
+
+ 
 
   return (
     <View style={mainView}>
@@ -47,7 +58,9 @@ const App = function () {
         style={mainText}
         onPress ={()=> alert("text touch event")}>Hello Wolrd</Text>
       </View>
-      <NumList num={random} />
+      <NumList num={random}
+               deleteNum={onNumDelete}
+                />
       <Generator add = {onAddRandomNum}/>
     </View>
   );

@@ -10,7 +10,8 @@
  import {
    View,
    Text,
-   StyleSheet
+   StyleSheet,
+   TouchableOpacity
  } from 'react-native';
  
  const styles = StyleSheet.create({
@@ -25,13 +26,13 @@
  
  const { numList } = styles;
  
- const NumList = function ({num}) {
+ const NumList = function ({num, deleteNum}) {
    return (
-    <>
+    <> 
     {num.map((item,idx)=>(
-    <View style = {numList} key = {idx}> 
+    <TouchableOpacity style = {numList} key = {idx} onPress = {() => deleteNum(idx)}> 
         <Text>{item}</Text>
-    </View>))}
+        </TouchableOpacity>))}
     </>
    );
  };
