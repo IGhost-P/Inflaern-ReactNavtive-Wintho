@@ -10,6 +10,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Generator from './src/generator';
 import Header from './src/header';
+import NumList from './src/numList';
 
 const styles = StyleSheet.create({
   mainView: {
@@ -17,7 +18,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingTop: 50,
     alignItems: 'center', // 수평 정령
-    justifyContent: 'center',
+  //  justifyContent: 'center',
   },
   mainText: {
     fontSize: 20,
@@ -46,7 +47,7 @@ const App = function () {
         style={mainText}
         onPress ={()=> alert("text touch event")}>Hello Wolrd</Text>
       </View>
-
+      <NumList num={random} />
       <Generator add = {onAddRandomNum}/>
     </View>
   );
