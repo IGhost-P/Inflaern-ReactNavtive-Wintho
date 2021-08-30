@@ -7,7 +7,7 @@
  */
 
 import React, { useState, useCallBack } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { Button, View, Text, StyleSheet, ScrollView } from 'react-native';
 import Generator from './src/generator';
 import Header from './src/header';
 import Input from './src/inPut';
@@ -30,48 +30,24 @@ const { mainView , mainText } = styles;
 
 const App = function () {
   const [state, setState] = useState({
-    appName: 'My First App',
-    random: [36,999]
+ 
   });
 
-  const { appName, random } = state;
+  const {  } = state;
 
-  const onAddRandomNum = () => {
-    randomNum = Math.floor(Math.random()*100)+1;
-    setState(state => {
-      return {
-        random : [...random, randomNum]
-      }
-    })
+  const onAddTextInput = () => {
+    alert('I want text Input')
   }
-
-  const onNumDelete = (position) => {
-    setState({random : random.filter((num,index)=> {return position !== index})}) // {random} = state이고 setState({state})임
-  }
-
  
 
   return (
     <View style={mainView}>
-      {/* <Header name={appName} />
-      <View>
-        <Text
-        style={mainText}
-        onPress ={()=> alert("text touch event")}>Hello Wolrd</Text>
-      </View>
 
-      <Generator add = {onAddRandomNum}/>
-
-      <ScrollView 
-        style ={{width : '100%'}}
-        >
-        <NumList num={random}
-                deleteNum={onNumDelete}
-                  />
-      </ScrollView>  */}
-      
       <Input/>
-
+      <Button 
+        title = "Add Text Input"
+        onPress = {onAddTextInput}
+        />
     </View>
   );
 };
