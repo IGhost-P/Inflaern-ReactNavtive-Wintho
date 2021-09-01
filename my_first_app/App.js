@@ -7,11 +7,7 @@
  */
 
 import React, { useState, useCallBack } from 'react';
-import { Button, View, Text, StyleSheet, ScrollView } from 'react-native';
-import Generator from './src/generator';
-import Header from './src/header';
-import Input from './src/inPut';
-import NumList from './src/numList';
+import { Button, View, Text, StyleSheet, ScrollView, TextInput } from 'react-native';
 
 const styles = StyleSheet.create({
   mainView: {
@@ -23,33 +19,67 @@ const styles = StyleSheet.create({
   },
   mainText: {
     fontSize: 20,
+    margin: 20,
+    backgroundColor : 'pink',
+    padding: 20
   },
+  inPut: {
+    width : '100%',
+    backgroundColor: '#cecece',
+    marginTop : 20,
+    fontSize: 25,
+    padding:10
+  }
 });
 
-const { mainView , mainText } = styles;
+const { mainView , mainText, inPut } = styles
 
 const App = function () {
-  const [state, setState] = useState({
+  
+  const [ text, setText] = useState('') // 상태 대문자로 했다가 에러났었음
+  const [ alphabet, setAlphabet] = useState(['a','b','c'])
  
-  });
-
-  const {  } = state;
+  const onChangeInput = (e) => {
+    setText(e);
+  }
 
   const onAddTextInput = () => {
-    alert('I want text Input')
+     setText('');
+     setAlphabet([...alphabet, text]);
+    
   }
  
 
   return (
     <View style={mainView}>
-
-      <Input/>
+      <TextInput 
+            value = {text}
+            style ={inPut}
+            onChangeText = {onChangeInput}
+        />
       <Button 
         title = "Add Text Input"
         onPress = {onAddTextInput}
         />
+        
+         <ScrollView style ={{width:'100%'}}>
+           {
+             alphabet.map((item, idx)=> (
+               <Text
+               style = {mainText}
+               key={idx}>
+                 {item}
+               </Text>
+             ))
+           }
+         </ScrollView>
+        
+
+    
     </View>
-  );
-};
+
+    )
+
+  }
 
 export default App;
