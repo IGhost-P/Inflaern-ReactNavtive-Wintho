@@ -30,6 +30,10 @@ const HomeScreen = ({navigation}) => {
                   userLastName: 'Hong'
                 }) 
             }}/>
+            <Button
+            title = "Change the title"
+            onPress={()=>navigation.setOptions({title: "Changed!", headerStyle: {backgroundColor: 'pink'}, headerTintColor: 'red'})}
+            />
     </View>
   );
 };

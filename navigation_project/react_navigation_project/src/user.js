@@ -14,6 +14,11 @@ import {
 // });
 
 const UserScreen = ({navigation, route}) => {
+    // headerStyle = () => {
+    //     navigation.setOptions
+    //         ({ headerStyle: {backgroundColor: 'blue'}, headerTintColor: 'green'}
+    //     )
+    // }
     // 보내준 route를 구조분해 할당
     let { userIndex, userName, userLastName } = route.params;
     userIndex || undefined;

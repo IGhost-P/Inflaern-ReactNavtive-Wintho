@@ -24,9 +24,12 @@ const Stack = createNativeStackNavigator(); // screen 프로퍼티를 리턴할�
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName ={"Home"}>
-      <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="User" component={UserScreen} />
+      <Stack.Navigator initialRouteName ={"User"} screenOptions= {{ headerStyle: {backgroundColor: 'yellow'}, headerTintColor: 'red'}}>
+      <Stack.Screen name="Home" component={HomeScreen} options ={{title: "HomeScreen"}}/>
+        <Stack.Screen name="User" component={UserScreen} initialParams={{userIndex : 50,
+                  userName: 'Glidon',
+                  userLastName: 'Go'}}
+                  options ={{title: "UserScreen"}} />
         
       </Stack.Navigator>
     </NavigationContainer>
