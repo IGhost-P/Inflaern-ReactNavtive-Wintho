@@ -1,10 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
 import 'react-native-gesture-handler';
 import React from 'react';
 import {
@@ -15,22 +8,27 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
-import {
-  NavigationContainer
-}
-from '@react-navigation/native';
+// 네비게이션 구조와 컴포넌트를 관리, 이걸로 감싸져야한다 
+// 스크린, 네비게이션을 리턴함
 
-const styles = StyleSheet.create({
-});
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack'; // 스택이 좀 변경도미
+import HomeScreen from './src/home'
+import UserScreen from './src/user';
+// const styles = StyleSheet.create({
+// });
+
+const Stack = createNativeStackNavigator(); // screen 프로퍼티를 리턴할때 screen 컴포넌트를 명시하는데, nevigation이란 props을 각각의 screen 의 coponent에 넘겨주니, HomeScreen에서는 navigation을 받아와 속해 있는 메서드를 사용할수있는것
 
 
 const App = () => {
   return (
-    <>
-      <View>
-        <Text>Hello world</Text>
-      </View>
-    </>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="User" component={UserScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
