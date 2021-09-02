@@ -13,7 +13,12 @@ import {
 // const styles = StyleSheet.create({
 // });
 
-const UserScreen = ({navigation}) => {
+const UserScreen = ({navigation, route}) => {
+    // 보내준 route를 구조분해 할당
+    let { userIndex, userName, userLastName } = route.params;
+    userIndex || undefined;
+    userName || undefined;
+    userLastName || undefined;
   return (
     <View style = {{
         flex:1,
@@ -26,6 +31,10 @@ const UserScreen = ({navigation}) => {
             onPress={()=>{
                 navigation.navigate('Home') // name값을 명시해준다
             }}/>
+
+            <Text>User idx: {JSON.stringify(userIndex)}</Text>
+            <Text>User Name: {JSON.stringify(userName)}</Text>
+            <Text>User LastName: {JSON.stringify(userLastName)}</Text>
     </View>
   );
 };

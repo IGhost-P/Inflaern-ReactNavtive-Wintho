@@ -13,7 +13,7 @@ import {
 // const styles = StyleSheet.create({
 // });
 
-const HomeScreen = ({navigation}) => { // navigation 객체를 받아와
+const HomeScreen = ({navigation}) => { 
   return (
     <View style = {{
       flex:1,
@@ -24,7 +24,11 @@ const HomeScreen = ({navigation}) => { // navigation 객체를 받아와
         <Button
             title = "To home screen"
             onPress={()=>{
-                navigation.navigate('User') // name값을 명시해준다, 해당 컴포넌트로 바뀐다 // 해당 메서드를 사용
+                navigation.navigate('User',{ // User라는 스크리으로 보내는 파라미터임
+                  userIndex : 100,
+                  userName: 'Glidon',
+                  userLastName: 'Hong'
+                }) 
             }}/>
     </View>
   );

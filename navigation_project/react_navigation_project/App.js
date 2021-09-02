@@ -24,9 +24,10 @@ const Stack = createNativeStackNavigator(); // screen 프로퍼티를 리턴할�
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName ={"Home"}>
+      <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="User" component={UserScreen} />
-        <Stack.Screen name="Home" component={HomeScreen} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );
